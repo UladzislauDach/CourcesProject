@@ -1,0 +1,17 @@
+        pw.write("Селена Гомес " + a1 + "<br>");
+        pw.write("Кэти Перри " + a2 + "<br>");
+        pw.write("Эминем " + a3 + "<br>");
+        pw.write("Дэцл " + a4 + "<br>");
+        pw.write("</p>");
+        pw.write("<p>");
+        pw.write("Фолк-музыка " + b1 + "<br>");
+        pw.write("Кантри " + b2 + "<br>");
+        pw.write("Латиноамериканская музыка " + b3 + "<br>");
+        pw.write("Блюз " + b4 + "<br>");
+        pw.write("Ритм-н-блюз" + b5 + "<br>");
+        pw.write("Джаз " + b6 + "<br>");
+        pw.write("Электронная музыка " + b7 + "<br>");
+        pw.write("Рок " + b8 + "<br>");
+        pw.write("Хип-хоп " + b9 + "<br>");
+        pw.write("Тиктоник " + b10 + "<br>");
+        pw.write("</p>");
