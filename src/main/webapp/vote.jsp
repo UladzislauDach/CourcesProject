@@ -13,21 +13,21 @@
 <body>
 <form action="/app/vote" method="post">
     <p><b>Кто по вашему лучший исполнитель?</b></p>
-    <p><input type="radio" name="answer1" value="a1" checked>Селена Гомес</p>
-    <p><input type="radio" name="answer1" value="a2">Кэти Перри</p>
-    <p><input type="radio" name="answer1" value="a3">Эминем</p>
-    <p><input type="radio" name="answer1" value="a4">Дэцл</p>
+    <p><input type="radio" name="answer1" value="Selena Gomes" checked>Селена Гомес</p>
+    <p><input type="radio" name="answer1" value="Katty Parry">Кэти Перри</p>
+    <p><input type="radio" name="answer1" value="Eminem">Эминем</p>
+    <p><input type="radio" name="answer1" value="Decl">Дэцл</p>
     <br>
-    <p><input type="checkbox" name="answer2" value="b1">Фолк-музыка</p>
-    <p><input type="checkbox" name="answer2" value="b2">Кантри</p>
-    <p><input type="checkbox" name="answer2" value="b3">Латиноамериканская музыка</p>
-    <p><input type="checkbox" name="answer2" value="b4">Блюз</p>
-    <p><input type="checkbox" name="answer2" value="b5">Ритм-н-блюз</p>
-    <p><input type="checkbox" name="answer2" value="b6">Джаз</p>
-    <p><input type="checkbox" name="answer2" value="b7">Электронная музыка</p>
-    <p><input type="checkbox" name="answer2" value="b8">Рок</p>
-    <p><input type="checkbox" name="answer2" value="b9">Хип-хоп</p>
-    <p><input type="checkbox" name="answer2" value="b10">Тиктоник</p>
+    <p><input type="checkbox" name="answer2" value="Flock-music">Фолк-музыка</p>
+    <p><input type="checkbox" name="answer2" value="Country">Кантри</p>
+    <p><input type="checkbox" name="answer2" value="American music">Латиноамериканская музыка</p>
+    <p><input type="checkbox" name="answer2" value="Blues">Блюз</p>
+    <p><input type="checkbox" name="answer2" value="Rhythm and Blues">Ритм-н-блюз</p>
+    <p><input type="checkbox" name="answer2" value="Jazz">Джаз</p>
+    <p><input type="checkbox" name="answer2" value="Electric music">Электронная музыка</p>
+    <p><input type="checkbox" name="answer2" value="Rock">Рок</p>
+    <p><input type="checkbox" name="answer2" value="Hip-Hop">Хип-хоп</p>
+    <p><input type="checkbox" name="answer2" value="Ticktonik">Тиктоник</p>
     <textarea name="comment" cols="40" rows="3"></textarea>
     <p><input type="reset" value="Очистить"><input type="submit" value="Отдать голос"></p>
 </form>

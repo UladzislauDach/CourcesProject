@@ -9,7 +9,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 @WebServlet(name = "Vote", urlPatterns = "/vote")
 public class Vote extends HttpServlet {
@@ -25,6 +28,7 @@ public class Vote extends HttpServlet {
         Map<String, String[]> paramMap = req.getParameterMap();
         voteCounterAnswer1(paramMap);
         pw.write("<body><p>");
+
         for (Map.Entry<String, Integer> entry : valuesAnswer1.entrySet()) {
             pw.write("" + entry.getKey() + " : " + entry.getValue() + "<br>");
         }
@@ -49,6 +53,7 @@ public class Vote extends HttpServlet {
                 int oldValue = valuesAnswer1.get(chose);
                 valuesAnswer1.put(chose, ++oldValue);
             }
+        valuesAnswer1 = sortByValue(valuesAnswer1);
         // вторая форма
         for (String chose : mapValue.get("answer2"))
             if (!valuesAnswer2.containsKey(chose)) {
@@ -57,6 +62,7 @@ public class Vote extends HttpServlet {
                 int oldValue = valuesAnswer2.get(chose);
                 valuesAnswer2.put(chose, ++oldValue);
             }
+        valuesAnswer2 = sortByValue(valuesAnswer2);
         // третья
         LocalDateTime localDateTime = LocalDateTime.now();
         String now = localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
@@ -64,5 +70,16 @@ public class Vote extends HttpServlet {
             if (!comment.containsKey(now)) {
                 comment.put(now, text);
             }
+    }
+
+    public static Map<String, Integer> sortByValue(Map<String, Integer> unSortedMap) {
+        Map<String, Integer> result = new LinkedHashMap<>();
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(unSortedMap.entrySet());
+        list.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        for (Map.Entry<String, Integer> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 }
