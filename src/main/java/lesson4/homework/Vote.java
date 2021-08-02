@@ -22,6 +22,56 @@ public class Vote extends HttpServlet {
     private static Map<String, String> comment = new LinkedHashMap<>();
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("text/html; charset=UTF-8");
+        PrintWriter pw = resp.getWriter();
+        pw.write("<html>\n" +
+                "<head>\n" +
+                "    <title>Vote</title>\n" +
+                "</head>\n" +
+                "<body>\n" +
+                "<form action=\"/app/vote\" method=\"post\">\n" +
+                "    <table border=\"0\">\n" +
+                "        <tr>\n" +
+                "            <td>\n" +
+                "                <p><b>Who is the best artist?</b></p>\n" +
+                "                <p><input type=\"radio\" name=\"answer1\" value=\"Selena Gomes\" checked>Селена Гомес</p>\n" +
+                "                <p><input type=\"radio\" name=\"answer1\" value=\"Katty Parry\">Кэти Перри</p>\n" +
+                "                <p><input type=\"radio\" name=\"answer1\" value=\"Eminem\">Эминем</p>\n" +
+                "                <p><input type=\"radio\" name=\"answer1\" value=\"Decl\">Дэцл</p>\n" +
+                "            </td>\n" +
+                "            <td>\n" +
+                "                <p><b>What is your favorite genre of music?</b></p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Flock-music\">Фолк-музыка</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Country\">Кантри</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"American music\">Латиноамериканская музыка</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Blues\">Блюз</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Rhythm and Blues\">Ритм-н-блюз</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Jazz\">Джаз</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Electric music\">Электронная музыка</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Rock\">Рок</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Hip-Hop\">Хип-хоп</p>\n" +
+                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Ticktonik\">Тиктоник</p>\n" +
+                "            </td>\n" +
+                "            <td>\n" +
+                "                <p><b>Tell us about yourself</b></p>\n" +
+                "                <textarea name=\"comment\" cols=\"50\" rows=\"6\"></textarea>\n" +
+                "            </td>\n" +
+                "        </tr>\n" +
+                "        <tr>\n" +
+                "                <td>\n" +
+                "                <p><input align=\"center\" type=\"reset\" value=\"Clear\">\n" +
+                "                    <input type=\"submit\" value=\"Send my vote!\"></p>\n" +
+                "            </td>\n" +
+                "        </tr>\n" +
+                "    </table>\n" +
+                "\n" +
+                "</form>\n" +
+                "</body>\n" +
+                "</html>");
+    }
+
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter pw = resp.getWriter();
@@ -38,11 +88,11 @@ public class Vote extends HttpServlet {
             pw.write("<p>" + entry.getKey() + " : " + entry.getValue() + " voices</p>");
         }
         pw.write("<br>");
-        pw.write("<h4> Top text \"About me\" : </h4>");
+        pw.write("<h4> Text \"About me\" : </h4>");
         for (Map.Entry<String, String> entry : comment.entrySet()) {
             pw.write("<p>" + entry.getKey() + " : " + entry.getValue());
         }
-        pw.write("<p><a href=\"vote.jsp\">Vote again</a></p>");
+        pw.write("<p><a href=\"vote\">Vote again</a></p>");
         pw.write("<p></body>");
 
 
