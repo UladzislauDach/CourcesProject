@@ -28,15 +28,19 @@ public class Vote extends HttpServlet {
         Map<String, String[]> paramMap = req.getParameterMap();
         voteCounterAnswer1(paramMap);
         pw.write("<body><p>");
-
+        pw.write("<h4> Top artist: </h4>");
         for (Map.Entry<String, Integer> entry : valuesAnswer1.entrySet()) {
-            pw.write("" + entry.getKey() + " : " + entry.getValue() + "<br>");
+            pw.write("<p>" + entry.getKey() + " : " + entry.getValue() + " voices</p>");
         }
+        pw.write("<br>");
+        pw.write("<h4> Top musical genre: </h4>");
         for (Map.Entry<String, Integer> entry : valuesAnswer2.entrySet()) {
-            pw.write("" + entry.getKey() + " : " + entry.getValue() + "<br>");
+            pw.write("<p>" + entry.getKey() + " : " + entry.getValue() + " voices</p>");
         }
+        pw.write("<br>");
+        pw.write("<h4> Top text \"About me\" : </h4>");
         for (Map.Entry<String, String> entry : comment.entrySet()) {
-            pw.write("" + entry.getKey() + " : " + entry.getValue() + "<br>");
+            pw.write("<p>" + entry.getKey() + " : " + entry.getValue());
         }
         pw.write("<p><a href=\"vote.jsp\">Vote again</a></p>");
         pw.write("<p></body>");
