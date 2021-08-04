@@ -1,5 +1,6 @@
 package lesson4.homework;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,70 +10,28 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet(name = "Vote", urlPatterns = "/vote")
 public class Vote extends HttpServlet {
-
     private static Map<String, Integer> valuesAnswer1 = new LinkedHashMap<>();
     private static Map<String, Integer> valuesAnswer2 = new LinkedHashMap<>();
     private static Map<String, String> comment = new LinkedHashMap<>();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html; charset=UTF-8");
-        PrintWriter pw = resp.getWriter();
-        pw.write("<html>\n" +
-                "<head>\n" +
-                "    <title>Vote</title>\n" +
-                "</head>\n" +
-                "<body>\n" +
-                "<form action=\"/app/vote\" method=\"post\">\n" +
-                "    <table border=\"0\">\n" +
-                "        <tr>\n" +
-                "            <td>\n" +
-                "                <p><b>Who is the best artist?</b></p>\n" +
-                "                <p><input type=\"radio\" name=\"answer1\" value=\"Selena Gomes\" checked>Селена Гомес</p>\n" +
-                "                <p><input type=\"radio\" name=\"answer1\" value=\"Katty Parry\">Кэти Перри</p>\n" +
-                "                <p><input type=\"radio\" name=\"answer1\" value=\"Eminem\">Эминем</p>\n" +
-                "                <p><input type=\"radio\" name=\"answer1\" value=\"Decl\">Дэцл</p>\n" +
-                "            </td>\n" +
-                "            <td>\n" +
-                "                <p><b>What is your favorite genre of music?</b></p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Flock-music\">Фолк-музыка</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Country\">Кантри</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"American music\">Латиноамериканская музыка</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Blues\">Блюз</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Rhythm and Blues\">Ритм-н-блюз</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Jazz\">Джаз</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Electric music\">Электронная музыка</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Rock\">Рок</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Hip-Hop\">Хип-хоп</p>\n" +
-                "                <p><input type=\"checkbox\" name=\"answer2\" value=\"Ticktonik\">Тиктоник</p>\n" +
-                "            </td>\n" +
-                "            <td>\n" +
-                "                <p><b>Tell us about yourself</b></p>\n" +
-                "                <textarea name=\"comment\" cols=\"50\" rows=\"6\"></textarea>\n" +
-                "            </td>\n" +
-                "        </tr>\n" +
-                "        <tr>\n" +
-                "                <td>\n" +
-                "                <p><input align=\"center\" type=\"reset\" value=\"Clear\">\n" +
-                "                    <input type=\"submit\" value=\"Send my vote!\"></p>\n" +
-                "            </td>\n" +
-                "        </tr>\n" +
-                "    </table>\n" +
-                "\n" +
-                "</form>\n" +
-                "</body>\n" +
-                "</html>");
+        RequestDispatcher view = req.getRequestDispatcher("/vote.html");
+        view.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String[] params = req.getParameterValues("answer2");
+        if (params == null || params.length < 3 || params.length > 5) {
+            RequestDispatcher view = req.getRequestDispatcher("/vote-error.html");
+            view.forward(req, resp);
+            return;
+        }
         resp.setContentType("text/html; charset=UTF-8");
         PrintWriter pw = resp.getWriter();
         Map<String, String[]> paramMap = req.getParameterMap();
