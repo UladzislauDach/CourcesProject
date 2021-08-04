@@ -60,7 +60,7 @@ public class Vote extends HttpServlet {
 
     }
 
-    private static void voteCounterAnswer1(Map<String, String[]> mapValue) {
+    public static void voteCounterAnswer1(Map<String, String[]> mapValue) {
         //считаем голоса на первую форму
         for (String chose : mapValue.get("answer1"))
             if (!valuesAnswer1.containsKey(chose)) {
