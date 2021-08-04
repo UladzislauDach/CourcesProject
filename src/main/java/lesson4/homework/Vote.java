@@ -21,6 +21,8 @@ public class Vote extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher view = req.getRequestDispatcher("/vote.html");
+        resp.setContentType("text/html; charset=UTF-8");
+        req.setCharacterEncoding("utf8");
         view.forward(req, resp);
     }
 
@@ -33,6 +35,7 @@ public class Vote extends HttpServlet {
             return;
         }
         resp.setContentType("text/html; charset=UTF-8");
+        req.setCharacterEncoding("utf8");
         PrintWriter pw = resp.getWriter();
         Map<String, String[]> paramMap = req.getParameterMap();
         voteCounterAnswer1(paramMap);
