@@ -1,4 +1,4 @@
-package lesson6.homework;
+package lesson7.homework;
 
 public class PersonDto {
     private String firstName;
