@@ -1,4 +1,6 @@
-package lesson7.homework;
+package lesson7.homework.view;
+
+import lesson7.homework.model.PersonDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

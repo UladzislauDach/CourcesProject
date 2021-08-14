@@ -1,4 +1,8 @@
-package lesson7.homework;
+package lesson7.homework.controller.web.servlets;
+
+import lesson7.homework.model.PersonDto;
+import lesson7.homework.view.EStorageType;
+import lesson7.homework.view.IStorageHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +25,8 @@ public class PersonServlet extends HttpServlet {
         } catch (NullPointerException e) {
             throw new IllegalArgumentException("Нет обязательного заголовка", e);
         }
-        PersonDto person = PersonFromReqParam.getPersonDtoFromRequest(req);
+        PersonDto person = new PersonDto();
+        person.initPersonDtoFromRequest(req);
         storageHandler.savePerson(resp, req, person);
         writer.write("success");
     }
@@ -33,7 +38,7 @@ public class PersonServlet extends HttpServlet {
         PersonDto person;
         EStorageType storageType = EStorageType.valueOfIgnoreCase(req.getHeader("readFrom"));
         person = storageType.getHandler().getPerson(req);
-        writer.write("Writ from " + req.getHeader("saveTo") + " </br>");
+        writer.write("Read from " + req.getHeader("readFrom") + " </br>");
         writer.write("p : " + person.getFirstName() + "</br>");
         writer.write("p : " + person.getLastName() + "</br>");
         writer.write("p : " + person.getAge() + "</br>");

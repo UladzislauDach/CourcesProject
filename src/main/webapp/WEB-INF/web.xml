@@ -4,12 +4,19 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>MyFirstServlet</display-name>
-<!--    <servlet>-->
-<!--        <servlet-name>HelloServlet</servlet-name>-->
-<!--        <servlet-class>lesson3.HelloServlet</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>HelloServlet</servlet-name>-->
-<!--        <url-pattern>/test</url-pattern>-->
-<!--    </servlet-mapping>-->
+    <filter>
+        <filter-name>SecurityFilter</filter-name>
+        <filter-class>lesson7.homework.controller.web.filters.SecurityFilter</filter-class>
+        <init-param>
+            <param-name>active</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>SecurityFilter</filter-name>
+        <servlet-name>PersonServlet</servlet-name>
+    </filter-mapping>
+<!--    <listener>-->
+<!--        <listener-class>lesson7.homework.controller.web.listeners.SessionChangeListener</listener-class>-->
+<!--    </listener>-->
 </web-app>
