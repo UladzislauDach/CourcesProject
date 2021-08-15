@@ -22,9 +22,9 @@ public class SendMessage extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
-        String from = (String) req.getSession().getAttribute("login");
-        String to = req.getParameter("to");
-        String text = req.getParameter("text");
+        String from = (String) req.getSession().getAttribute("login"); // от кого отправляем
+        String to = req.getParameter("to"); // кому отправляем
+        String text = req.getParameter("text"); // текст сообщения
         Storage storage = Storage.getInstance();
         if (storage.addMessage(from, to, text)) {
             req.setAttribute("info", "Успешно отправлено");
