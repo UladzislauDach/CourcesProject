@@ -18,14 +18,14 @@
         User user = Storage.getInstance().getUser((String) session.getAttribute("login"),
                 (String) session.getAttribute("password"));
     %>
-    Привет, <%=user.getName() + user.getPassword()%>
+    Привет, <%=user.getName()%>
 </h4>
 </br>
-<form action="messenger/registration">
+<form action="messenger/mail">
     <button>Мои сообщения</button>
 </form>
 </br>
-<form action="messenger/login">
+<form action="messenger/send">
     <button>Отправить сообщение</button>
 </form>
 </br>

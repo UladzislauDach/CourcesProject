@@ -1,6 +1,8 @@
 package lesson8.homework.model;
 
-public class User {
+import java.util.Objects;
+
+public class User{
     private String login;
     private String password;
     private String name;
@@ -44,4 +46,5 @@ public class User {
     public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
+
 }

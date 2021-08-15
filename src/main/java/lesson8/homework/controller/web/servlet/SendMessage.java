@@ -7,35 +7,30 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-@WebServlet(name = "LogIn", urlPatterns = "/messenger/login")
-public class LogIn extends HttpServlet {
-
+@WebServlet (name = "SendMessage", urlPatterns = "/messenger/send")
+public class SendMessage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
         req.setAttribute("info", "");
-        req.getRequestDispatcher("/views/messenger/login.jsp").forward(req, resp);
+        req.getRequestDispatcher("/views/messenger/send_message.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
+        String from = (String) req.getSession().getAttribute("login");
+        String to = req.getParameter("to");
+        String text = req.getParameter("text");
         Storage storage = Storage.getInstance();
-        String login = req.getParameter("login");
-        String password = req.getParameter("password");
-        if (storage.getUser(login, password) != null){
-            HttpSession session = req.getSession();
-            session.setAttribute("login", login);
-            session.setAttribute("password", password);
-            resp.sendRedirect("/app/messenger");
+        if (storage.addMessage(from, to, text)) {
+            req.setAttribute("info", "Успешно отправлено");
         } else {
-            req.setAttribute("info", "Неверный логин или пароль");
-            req.getRequestDispatcher("/views/messenger/login.jsp").forward(req,resp);
+            req.setAttribute("info", "Ошибка отправки. Такого пользователя не существует.");
         }
+        req.getRequestDispatcher("/views/messenger/send_message.jsp").forward(req, resp);
     }
 }
