@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-@WebServlet(name = "LogOut", urlPatterns = "/messenger/logout")
-public class LogOut extends HttpServlet {
+@WebServlet(name = "SignOut", urlPatterns = "/messenger/signOut")
+public class SignOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getSession().invalidate();

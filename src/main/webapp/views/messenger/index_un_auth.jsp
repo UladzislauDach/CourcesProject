@@ -13,11 +13,11 @@
 <body>
 <h4>Привет, Гость!</h4>
 </br>
-<form action="messenger/registration">
+<form action="messenger/signUp">
     <button>Зарегистрироваться</button>
 </form>
 </br>
-<form action="messenger/login">
+<form action="messenger/signIn">
     <button>Войти</button>
 </form>
 </body>

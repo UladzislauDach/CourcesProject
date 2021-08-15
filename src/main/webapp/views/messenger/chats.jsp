@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Мои сообщения</title>
+    <title>Сообщения</title>
 </head>
 <body>
 <h4>Ваши сообщения:</h4>

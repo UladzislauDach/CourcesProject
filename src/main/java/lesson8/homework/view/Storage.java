@@ -23,12 +23,11 @@ public class Storage {
     }
 
     public User getUser(String login, String password){
-        User user = userList.stream().filter(o-> o.getLogin().equals(login)
+        return userList.stream().filter(o-> o.getLogin().equals(login)
                 && o.getPassword().equalsIgnoreCase(password)).findFirst().orElse(null);
-        return user;
     }
 
-    private boolean existUserLogin (String login){
+    public boolean existUserLogin (String login){
        return userList.stream().anyMatch(o -> o.getLogin().equals(login));
     }
 

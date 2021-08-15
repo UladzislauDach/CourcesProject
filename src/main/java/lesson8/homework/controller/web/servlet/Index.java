@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "MainPage", urlPatterns = "/messenger")
-public class MainPage extends HttpServlet {
+public class Index extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -22,6 +22,4 @@ public class MainPage extends HttpServlet {
             req.getRequestDispatcher("/views/messenger/index_auth.jsp").forward(req, resp);
         }
     }
-
-
 }

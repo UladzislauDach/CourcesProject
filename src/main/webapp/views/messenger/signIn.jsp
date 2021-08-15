@@ -4,9 +4,8 @@
     <title>signUp</title>
 </head>
 <body>
-<p style="color: red"><%=(String) request.getAttribute("info")%>
-</p>
-<form action="login" method="post">
+<p style="color: red"><%=(String) request.getAttribute("info")%></p>
+<form action="signIn" method="post">
     <p><b>Вход в аккаунт</b></p>
     <p>
         <label for="login">Логин: </label>

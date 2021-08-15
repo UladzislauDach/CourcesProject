@@ -6,7 +6,7 @@
 <body>
 <p style="color: red"><%=(String) request.getAttribute("info")%>
 </p>
-<form action="send" method="post">
+<form action="message" method="post">
     <p><b>Отправим сообщение:</b></p>
     <p>
         <label for="to">Кому: </label>

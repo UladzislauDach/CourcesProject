@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns ={"/messenger/mail","/messenger/send"})
+@WebFilter(urlPatterns ={"/messenger/chats","/messenger/message"})
 public class SecurityFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -22,7 +22,7 @@ public class SecurityFilter implements Filter {
         if (session!=null && session.getAttribute("login")!= null){
             chain.doFilter(request,response);
         } else
-            res.sendRedirect(contextPath + "/messenger/login");
+            res.sendRedirect(contextPath + "/messenger/signIn");
     }
 
     @Override
