@@ -25,7 +25,7 @@ public class Registration extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html; charset=UTF-8");
         String login = req.getParameter("login");
-        String password = req.getParameter("login");
+        String password = req.getParameter("password");
         Storage storage = Storage.getInstance();
         storage.addUser(new User(login, password, req.getParameter("name"), req.getParameter("birth")));
         HttpSession session = req.getSession();
