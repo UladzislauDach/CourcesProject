@@ -22,7 +22,7 @@ public class MessageSender extends HttpServlet {
         String to = req.getParameter("to"); // кому отправляем
         String text = req.getParameter("text"); // текст сообщения
         Storage storage = Storage.getInstance();
-        if (storage.addMessage(from, to, text)) {
+        if (storage.addMessage(to, from, text)) {
             req.setAttribute("info", "Успешно отправлено");
         } else {
             req.setAttribute("info", "Ошибка отправки. Такого пользователя не существует.");

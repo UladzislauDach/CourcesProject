@@ -3,31 +3,31 @@ package lesson8.homework.model;
 import java.time.LocalDateTime;
 
 public class Message {
-    private String to;
-    private String from;
+    private User to;
+    private User from;
     private String sendAt;
     private String text;
 
-    public Message(String to, String from, String sendAt, String text) {
+    public Message(User to, User from, String sendAt, String text) {
         this.to = to;
         this.from = from;
         this.sendAt = sendAt;
         this.text = text;
     }
 
-    public String getTo() {
+    public User getTo() {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(User to) {
         this.to = to;
     }
 
-    public String getFrom() {
+    public User getFrom() {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(User from) {
         this.from = from;
     }
 

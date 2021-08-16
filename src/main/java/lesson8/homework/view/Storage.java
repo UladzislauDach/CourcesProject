@@ -11,6 +11,9 @@ import java.util.stream.Collectors;
 public class Storage {
     private static final Storage instance = new Storage();
 
+    private Storage() {
+    }
+
     private final List<User> userList = new ArrayList<>();
     private final List<Message> messageList = new ArrayList<>();
 
@@ -22,25 +25,29 @@ public class Storage {
         userList.add(user);
     }
 
-    public User getUser(String login, String password){
-        return userList.stream().filter(o-> o.getLogin().equals(login)
+    private User getUserByLogin(String login) {
+        return userList.stream().filter(o -> o.getLogin().equals(login)).findFirst().orElse(null);
+    }
+
+    public User getUser(String login, String password) {
+        return userList.stream().filter(o -> o.getLogin().equals(login)
                 && o.getPassword().equalsIgnoreCase(password)).findFirst().orElse(null);
     }
 
-    public boolean existUserLogin (String login){
-       return userList.stream().anyMatch(o -> o.getLogin().equals(login));
+    public boolean existUserLogin(String login) {
+        return userList.stream().anyMatch(o -> o.getLogin().equals(login));
     }
 
-    public boolean addMessage (String from, String to, String text){
+    public boolean addMessage(String to, String from, String text) {
         if (!existUserLogin(to)) return false;
         LocalDateTime now = LocalDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        messageList.add(new Message(to, from, now.format(formatter), text));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        messageList.add(new Message(getUserByLogin(to), getUserByLogin(from), now.format(formatter), text));
         return true;
     }
 
-    public List<Message> getMessageList (String ownerLogin){
-        return messageList.stream().filter(m -> m.getTo().equals(ownerLogin)).collect(Collectors.toList());
+    public List<Message> getMessageList(String ownerLogin) {
+        return messageList.stream().filter(m -> m.getTo().getLogin().equals(ownerLogin)).collect(Collectors.toList());
     }
 
 }

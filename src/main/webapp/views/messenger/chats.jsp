@@ -17,7 +17,7 @@
     </tr>
     <c:forEach var="message" items="${listMessage}">
         <tr>
-            <td>${message.getFrom()}</td>
+            <td>${message.getFrom().getLogin()}</td>
             <td>${message.getSendAt()}</td>
             <td>${message.getText()}</td>
         </tr>
