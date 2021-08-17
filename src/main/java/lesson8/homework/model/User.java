@@ -1,7 +1,5 @@
 package lesson8.homework.model;
 
-import java.util.Objects;
-
 public class User{
     private String login;
     private String password;
@@ -14,6 +12,7 @@ public class User{
         this.name = name;
         this.birthDate = birthDate;
     }
+    double a = Math.PI;
 
     public String getLogin() {
         return login;

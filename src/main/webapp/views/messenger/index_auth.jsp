@@ -13,13 +13,7 @@
     <title>MainPage</title>
 </head>
 <body>
-<h4>
-    <%
-        User user = Storage.getInstance().getUser((String) session.getAttribute("login"),
-                (String) session.getAttribute("password"));
-    %>
-    Привет, <%=user.getName()%>
-</h4>
+    <h4> Привет, ${login} </h4>
 </br>
 <form action="messenger/chats">
     <button>Мои сообщения</button>
