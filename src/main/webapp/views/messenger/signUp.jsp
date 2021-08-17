@@ -13,7 +13,7 @@
     </p>
     <p>
         <label for="password">password: </label>
-        <input id="password" type="text" name="password">
+        <input id="password" type="password" name="password">
     </p>
     <p>
         <label for="name">name: </label>
