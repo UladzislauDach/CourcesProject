@@ -4,12 +4,13 @@
     <title>signUp</title>
 </head>
 <body>
-<p style="color: red"><%=(String) request.getAttribute("info")%></p>
+<p style="color: red"><%=(String) request.getAttribute("info")%>
+</p>
 <form action="signUp" method="post">
     <p><b>Заполните данные для регистрации</b></p>
     <p>
         <label for="login">login: </label>
-        <input id="login"  type="text" name="login">
+        <input id="login" type="text" name="login">
     </p>
     <p>
         <label for="password">password: </label>
@@ -23,7 +24,11 @@
         <label for="birth">birth: </label>
         <input id="birth" type="text" name="birth">
     </p>
-    <p><input type="reset" value="Очистить"><input type="submit" value="Зарегистрироваться"></p>
+    <p><input type="reset" value="Очистить"></p>
+    <p><input type="submit" value="Зарегистрироваться"></p>
+</form>
+<form action="/app/messenger">
+    <button>Главная страница</button>
 </form>
 </body>
 </html>

@@ -12,7 +12,8 @@ import java.io.IOException;
 public class MessageSender extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("info", "");
+        req.setAttribute("error", "");
+        req.setAttribute("success", "");
         req.getRequestDispatcher("/views/messenger/message.jsp").forward(req, resp);
     }
 
@@ -23,9 +24,11 @@ public class MessageSender extends HttpServlet {
         String text = req.getParameter("text"); // текст сообщения
         Storage storage = Storage.getInstance();
         if (storage.addMessage(to, from, text)) {
-            req.setAttribute("info", "Успешно отправлено");
+            req.setAttribute("success", "Успешно отправлено");
+            req.setAttribute("error", "");
         } else {
-            req.setAttribute("info", "Ошибка отправки. Такого пользователя не существует.");
+            req.setAttribute("success", "");
+            req.setAttribute("error", "Ошибка отправки. Такого пользователя не существует.");
         }
         req.getRequestDispatcher("/views/messenger/message.jsp").forward(req, resp);
     }

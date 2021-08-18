@@ -19,7 +19,6 @@ public class Index extends HttpServlet {
         if (login == null || password == null) {
             req.getRequestDispatcher("/views/messenger/index_un_auth.jsp").forward(req, resp);
         } else  {
-            req.setAttribute("name", login);
             req.getRequestDispatcher("/views/messenger/index_auth.jsp").forward(req, resp);
         }
     }

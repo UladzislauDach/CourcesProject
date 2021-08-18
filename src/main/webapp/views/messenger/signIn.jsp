@@ -20,5 +20,8 @@
 <form action="/app/messenger">
     <button>Главная страница</button>
 </form>
+<form action="signUp">
+    <button>Зарегистрироваться</button>
+</form>
 </body>
 </html>

@@ -13,7 +13,8 @@
     <title>MainPage</title>
 </head>
 <body>
-    <h4> Привет, ${login} </h4>
+<h4> Привет,  <%=session.getAttribute("login")%>
+</h4>
 </br>
 <form action="messenger/chats">
     <button>Мои сообщения</button>

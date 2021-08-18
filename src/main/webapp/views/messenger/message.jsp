@@ -4,7 +4,8 @@
     <title>signUp</title>
 </head>
 <body>
-<p style="color: red"><%=(String) request.getAttribute("info")%>
+<p style="color: red"><%=(String) request.getAttribute("error")%>
+<p style="color: green"><%=(String) request.getAttribute("success")%>
 </p>
 <form action="message" method="post">
     <p><b>Отправим сообщение:</b></p>
